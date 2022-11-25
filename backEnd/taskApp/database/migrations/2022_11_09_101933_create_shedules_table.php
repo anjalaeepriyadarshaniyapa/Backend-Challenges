@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('shedules', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('emp_id')->unsigned();
+            $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('shift_id');
+            $table->string('day');
+
+            $table->foreign('shift_id')->references('id')->on('shifts')->cascadeOnDelete();
+            $table->foreign('location_id')->references('id')->on('locations')->cascadeOnDelete();
+            $table->foreign('emp_id')->references('id')->on('employees')->cascadeOnDelete();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('shedules');
+    }
+};
