@@ -8,19 +8,30 @@ use Illuminate\Support\Facades\DB;
 
 class attendenceController extends Controller
 {
-    function storeAttendenceDetails(Request $request){
-    
+    function storeAttendenceDetails(Request $request)
+    {
+
         $data = [];
-  foreach( $request->all() as $attendenceRaw){
+        foreach ($request->all() as $attendenceRaw) {
 
-        unset($attendenceRaw['__rowNum__']);
+            unset($attendenceRaw['__rowNum__']);
 
-         array_push($data,$attendenceRaw);
-  }
+            array_push($data, $attendenceRaw);
+        }
 
-DB::table('attendances')->insert($data);
+        DB::table('attendances')->insert($data);
 
         return $data;
+
+    }
+
+    function getAttendenceDetails(Request $request)
+    {
+
+        $results = DB::select('select employees.id,employees.name,employees.position,employees.address,attendances.checkin,attendances.checkout,attendances.total_working_hours from employees left join attendances
+        on employees.id=attendances.emp_id');
+
+        return $results;
 
     }
 }

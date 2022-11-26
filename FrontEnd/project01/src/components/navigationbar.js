@@ -15,12 +15,6 @@ import {FcOvertime} from 'react-icons/fc'
 
 const navbardata =[
   {
-    tab_name: 'Dashboard',
-    redirect_path: '/',
-    icone :<AiFillDashboard/>,
-    cName :'nav-text'
-  },
-  {
     tab_name: 'Employes',
     redirect_path: '/Employes',
     icone :<ImMan/>,

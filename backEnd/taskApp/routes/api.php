@@ -24,3 +24,5 @@ Route::post("saveAttendance",[AttendenceController::class, "storeAttendenceDetai
 
 Route::post("saveEmployee",[EmployeeControlle::class, "saveEmployeeDetails"]);
 
+Route::get("getAttendance",[AttendenceController::class, "getAttendenceDetails"]);
+
