@@ -43,6 +43,7 @@ export default class Attendence1 extends Component {
 
     return (
       <div className="container mt-3">
+         <h1>Attendance Details</h1> <br/>
         <table className="table table-bordered">
           <thead>
             <tr>

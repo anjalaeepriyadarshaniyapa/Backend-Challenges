@@ -47,7 +47,7 @@ export default function MyForm() {
 
   return (
     <div className="container mt-3">
-      <h1>Add new Employes</h1>
+      <h1>Add new Employes</h1> <br/>
       <fieldset className="hFybtn form">
         <form
           onSubmit={(e) => {
