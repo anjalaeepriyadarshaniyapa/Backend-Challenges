@@ -6,6 +6,7 @@ const url = "http://127.0.0.1:8000/api/getAttendance";
 export default class Attendence1 extends Component {
   state = {
     attendanceData: [],
+    isload : true
   };
 
   tbody = (attendanceData) => {
@@ -33,17 +34,24 @@ export default class Attendence1 extends Component {
     return <tbody>{tableRows}</tbody>;
   };
 
-  render() {
+  componentDidMount() {
     axios
       .get(url)
       .then((response) => {
         this.setState({ attendanceData: response.data });
+        this.setState({ isload:false});
       })
       .catch((error) => console.log(error));
+  }
 
+  render() {
+
+    if(this.state.isload)
+    return  <div class="loader"></div>
+    else
     return (
       <div className="container mt-3">
-         <h1>Attendance Details</h1> <br/>
+        <h1>Attendance Details</h1> <br />
         <table className="table table-bordered">
           <thead>
             <tr>
